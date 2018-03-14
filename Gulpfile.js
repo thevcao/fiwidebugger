@@ -51,6 +51,7 @@ gulp.task('build', ['styles', 'scripts']);
 
 // Watch task
 gulp.task('watch', () => {
+  gulp.watch(['src/scss/*.scss'], ['styles']);
   gulp.watch(['src/js/*.js'], ['scripts']);
 });
 

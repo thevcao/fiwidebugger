@@ -1,3 +1,4 @@
+@import "https://s3.amazonaws.com/fw-devtools/fonts/styles.css";
 .fiwi-debugger {
   position: fixed;
   //  background: rgba(0,0,0,.5);
@@ -6,75 +7,144 @@
   bottom: 15px;
   z-index: 100000;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 12px;
   transition: all 0.5s cubic-bezier(.25, .8, .25, 1);
   width: 300px;
   //  transform: translate3d(0, -15px, 0);
-  padding: 0 1rem;
+  padding: 0 20px;
+  .debug-notice {
+    position: fixed;
+    bottom: 5px;
+    right: 55px;
+    line-height: 1;
+    opacity: .5;
+    width: 475px;
+    background: white;
+    border-radius: 100px;
+    padding: 6px 15px;
+    padding-bottom: 4px;
+    transition: .3s ease;
+
+    @media (max-width:768px) {
+
+      display: none;
+    }
+  }
+  .debug-notice p {
+    margin: 0;
+    line-height: 1;
+    font-family: caslon;
+    font-style: italic;
+    text-transform: capitalize;
+    letter-spacing: -.75px;
+    font-size: 16px;
+    text-align: right;
+    color: black;
+    a {
+      color: #eb3a24;
+    }
+  }
   .form-container {
     height: 0;
     overflow: hidden;
   }
   &.active {
+    .debug-notice {
+      opacity: 0;
+    }
     //    transform: translate3d(0, 0, 0);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24);
+    padding: 20px;
     &:hover {
       box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     }
     .form-container {
       height: auto;
+      overflow: visible;
     }
     .info-toggle {
       opacity: 1;
+      svg {
+        #info {
+          opacity: 0;
+          transform: scale(0);
+        }
+        #close {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
     }
   }
   p {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: knockout;
     margin: 0;
-    font-size: 12px;
-    font-weight: bold;
+    font-size: 2em;
+    font-weight: normal;
+    text-transform: uppercase;
+    color: #eb3a24;
+    line-height: 1;
   }
   .info-toggle {
-    background: #eb3a24;
-    color: white;
     display: block;
-    width: 36px;
     text-align: center;
-    padding: 4px 0;
+    padding: 0;
     border-radius: 100%;
     position: absolute;
     bottom: -5px;
-    right: -10px;
-    border: 2px solid white;
+    right: -5px;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    font-size: 1rem;
+    font-size: 1em;
     opacity: .75;
-    transition: opacity .5s ease;
+    transition: 0.3s cubic-bezier(.25, .8, .25, 1);
+    height: 36px;
+    width: 36px;
+    svg {
+      height: 36px;
+      width: 36px;
+      #info,
+      #close {
+        transition: 0.3s cubic-bezier(.25, .8, .25, 1);
+        transform-origin: 50% 50% 0;
+      }
+      #close {
+        transform: scale(0);
+        opacity: 0;
+      }
+    }
     &:hover {
       opacity: 1;
     }
   }
   input {
     border: none;
-    padding: 0rem .25rem;
-    margin-bottom: 1rem;
+    padding: 1em .25em .25em;
+    margin-bottom: 1em;
     width: 100%;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 10px;
-    line-height: 1.25;
+    font-family: Caslon;
+    font-size: 12px;
+    line-height: 1.5;
     outline: none;
+    text-overflow: ellipsis;
   }
-  a {
+  .send {
     display: block;
     background: #eee;
-    padding: .5rem 1rem;
+    padding: .5em 1em;
     color: #eb3a24;
     max-width: 200px;
     text-align: center;
-    font-size: 12px;
-    font-weight: bold;
+    font-family: knockout;
+    margin: 0;
+    font-size: 24px;
+    font-weight: normal;
+    text-transform: uppercase;
+    color: #eb3a24;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+    text-decoration: none;
     &:hover {
       box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
       background: #eb3a24;
