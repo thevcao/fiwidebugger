@@ -14,17 +14,30 @@
   padding: 0 20px;
   .debug-notice {
     position: fixed;
-    bottom: 5px;
-    right: 55px;
+    bottom: 0;
+    left: 0;
     line-height: 1;
-    opacity: .5;
+    opacity: .75;
     width: 475px;
     background: white;
-    border-radius: 100px;
+    border-radius: 0;
     padding: 6px 15px;
     padding-bottom: 4px;
     transition: .3s ease;
+    right: 0;
+    width: 100%;
+    padding: 5px 5px 5px 5px;
 
+
+    .notice-close {
+
+      margin-right: 10px;
+    }
+    &.disabled {
+
+      opacity: 0;
+      pointer-events: none;
+    }
     @media (max-width:768px) {
 
       display: none;
@@ -34,12 +47,14 @@
     margin: 0;
     line-height: 1;
     font-family: caslon;
-    font-style: italic;
+//    font-style: italic;
     text-transform: capitalize;
     letter-spacing: -.75px;
     font-size: 16px;
     text-align: right;
     color: black;
+    text-align: center;
+
     a {
       color: #eb3a24;
     }
@@ -157,4 +172,8 @@
       box-shadow: none;
     }
   }
+}
+.screenshot {
+
+  display: none;
 }
