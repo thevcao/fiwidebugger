@@ -388,6 +388,14 @@ if (css_browser_selector_ns != "") {
 //        elm.parentNode.insertBefore(wrapper, el);
         document.body.appendChild(wrapper, elm);
         wrapper.appendChild(elm);
+
+          var overlay = document.querySelector('.prep-overlay');
+          var img = document.querySelector('.screenshot canvas').toDataURL('image/jpeg', 0.75);
+          var newImage = new Image();
+          newImage.src = img;
+          var screenshotImg = '<img src="' + img + '">';
+          overlay.innerHTML = screenshotImg;
+
         document.getElementsByTagName("html")[0].classList.add('finished-screenshot');
 
         setTimeout(function(){
@@ -468,6 +476,7 @@ if (css_browser_selector_ns != "") {
       info.classList.toggle('active');
       document.getElementsByTagName("html")[0].classList.remove('prepare-screenshot');
       document.getElementsByTagName("html")[0].classList.remove('finished-screenshot');
+      document.getElementsByTagName("html")[0].classList.remove('finished-finished');
 
     }
 
@@ -537,7 +546,7 @@ if (css_browser_selector_ns != "") {
 
     function infoSend(e) {
       e.preventDefault();
-      var version = document.getElementsByTagName("html")[0].getAttribute("class");
+
       var pm = document.getElementById('pm').value;
       var url = document.URL;
       getInfo();
@@ -545,6 +554,8 @@ if (css_browser_selector_ns != "") {
 
         document.getElementsByTagName("html")[0].classList.remove('prepare-screenshot');
         document.getElementsByTagName("html")[0].classList.remove('finished-screenshot');
+        document.getElementsByTagName("html")[0].classList.remove('finished-finished');
+      var version = document.getElementsByTagName("html")[0].getAttribute("class");
         document.getElementsByTagName("body")[0].transform = '';
 
       var send = 'mailto:' + pm + '?subject=System%20Debug%20Information%20for%3A%20' + url + '&body=Website%3A%20' + url + '%0AScreen Size%3A%20' + screenSize + '%0AWindow Size%3A%20' + windowSize + '%0AScroll Position%3A%20' + position + '%0ASystem Info%3A%20' + version;
