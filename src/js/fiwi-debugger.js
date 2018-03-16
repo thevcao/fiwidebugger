@@ -282,16 +282,15 @@ if (css_browser_selector_ns != "") {
 }
 
 
+function init() {
 
 
-(function () {
 
 
-  var env = document.URL;
-
-  if (env.includes("staging") || env.includes("local")) {
 
 
+
+    var env = document.URL;
     var css = '@import "https://s3.amazonaws.com/fw-devtools/fiwi-debugger/css/style.min.css"; .fiwi-debugger {position: fixed; opacity: 0};',
       head = document.head || document.getElementsByTagName('head')[0],
       style = document.createElement('style');
@@ -571,6 +570,18 @@ if (css_browser_selector_ns != "") {
       return false;
     }
 
-  }
+}
 
-})();
+
+var once = 0;
+
+document.onkeyup = function(e) {
+  if (e.ctrlKey && e.which == 65 && once != 1) {
+
+          init();
+          once = 1;
+
+  }
+};
+
+
